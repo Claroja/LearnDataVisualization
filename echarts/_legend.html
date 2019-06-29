@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        data1=[[0,95], [1,70], [2,76], [3,70], [4,88], [5,91],[6,85]]
+        data2=[[0,65], [1,40], [2,46], [3,40], [4,58], [5,60],[6,55]]
+        var option = {// 图表的配置项和数据
+            legend: {
+                data: ['yuwen', 'shuxue'],//这里要和下面series里面的name对应
+            },
+            xAxis: {
+                boundaryGap: false,//改变x轴ticks位置
+                data: ["一","二","三","四","五","六","日"]//这个是ticks，如果显示
+            },
+            yAxis: {},//设置y轴
+            series: [{
+                name: 'yuwen',
+                type: 'scatter',
+                data: data1//这个是scale，对应的刻度，可以不显示默认从0开始
+            },
+            {
+                name: 'shuxue',
+                type: 'scatter',
+                data: data2//这个是scale，对应的刻度，可以不显示默认从0开始    
+            }
+            ]
+        };
+        myChart.setOption(option);// 使用刚指定的配置项和数据显示图表。
+    </script>
+</body>
+</html>

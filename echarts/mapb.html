@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+    <!--导入bmap插件-->
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/extension/bmap.js"></script>
+    <!--输入百度地图api-->
+    <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&services=&t=20190622163250"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        data1=[//自动将第一维度和第二维度数据映射为坐标
+            [121.15,31.89,9],
+            [109.781327,39.608266,12],
+            ];
+        data2=[//添加了名称可以在地图上显示，这个常用
+            {name: "海门", value: [121.15,31.89,9]},
+            {name: "鄂尔多斯", value: [109.781327,39.608266,12]}
+            ];
+        option = {
+            bmap: {
+                center: [104.114129, 37.550339],
+            },
+            series: [
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'bmap',//声明坐标系
+                    data: data1,
+                }
+            ]
+        };
+        myChart.setOption(option);// 使用刚指定的配置项和数据显示图表
+    </script>
+</body>
+</html>

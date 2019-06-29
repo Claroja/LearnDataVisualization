@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        data1=[[20,20], [31,33], [45,40], [56,49], [60,70], [80,91],[90,75]];//这个是scale，对应的刻度，可以不显示默认从0开始
+        var arr = new Array(100);
+        for(var i = 0;i < 100;i++){
+            arr[i] = [i,i];
+        }
+        var option = {// 图表的配置项和数据
+            legend: {
+                data: ['cluster1','line'], 
+            },
+            xAxis: {
+                boundaryGap: false,//改变x轴ticks位置
+            },
+            yAxis: {},//设置y轴
+            series: [{
+                name: 'cluster1',
+                type: 'scatter',
+                data: data1,  
+                symbol: 'circle',
+                symbolSize: 20,
+            },{
+                name: 'line',
+                type: 'line',
+                symbolSize: 0,
+                data: arr,  
+            }]
+        };
+        myChart.setOption(option);// 使用刚指定的配置项和数据显示图表。
+    </script>
+</body>
+</html>

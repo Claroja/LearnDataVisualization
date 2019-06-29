@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        data=[
+            {value:400, name:'旅游'},
+            {value:300, name:'学习'},
+            {value:200, name:'游戏'},
+            {value:100, name:'ktv'}
+        ]
+        //data=[400,300,200,100]//没有name的值不会显示标签
+        var option = {
+            series : [
+                {type: 'pie',data:data}
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

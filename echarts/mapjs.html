@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+    <script type="text/javascript" src="xxx.js"></script><!-- 导入地图文件 -->
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        option = {
+            series: [{
+                    type: 'map',
+                    mapType: "name",//填写js地图注册的名字，可以在js地图文件里查看,注意不是地图文件名,而是里面注册的地图名称
+                }]
+        }
+        myChart.setOption(option);// 使用刚指定的配置项和数据显示图表。
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        data=[[0,95],[1,70],[2,76],[3,70],[4,88],[5,91]]//最外层数组代表了有几个数据点，内层数组第一个是scale，第二个是数值
+        data=[95,70,76,70,88,91]//这个省略了scale，和上面的是等价的,默认从0开始计算刻度
+        xticks=["语文","数学","英语","历史","地理","政治"]//这个是设置ticks，既是scale和label
+
+        var option = {// 图表的配置项和数据
+            xAxis: {
+                data: xticks
+            },
+            yAxis: {},
+            series: [{
+                type: 'bar',
+                data: data 
+            }]
+        };
+    myChart.setOption(option);// 使用刚指定的配置项和数据显示图表。
+    </script>
+</body>
+</html>

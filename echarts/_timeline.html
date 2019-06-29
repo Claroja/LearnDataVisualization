@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+time=["1990", "1991", "1992","1993"];
+data1=[[[500,20]],[[1000,40]],[[5000,60]],[[10000,80]]];
+option = {
+    baseOption: {
+        timeline: {//设置时间轴
+            axisType: 'category',
+            autoPlay: true,
+            playInterval: 1000,
+            data: time
+        },
+        xAxis: {
+            type: 'log',
+            name: '人均收入',
+            max: 100000,
+            min: 300,
+        },
+        yAxis: {
+            type: 'value',
+            name: '平均寿命',
+            max: 100,
+        },
+    },
+    options: [//在option中实际存的是并列的series
+        {series:{type: 'scatter', data: data1[0]}},
+        {series:{type: 'scatter', data: data1[1]}},
+        {series:{type: 'scatter', data: data1[2]}},
+        {series:{type: 'scatter', data: data1[3]}},
+    ]
+};
+
+// for (var n = 0; n < 4; n++) {//循环插入
+//     option.options.push({
+//         series: {
+//             type: 'scatter',
+//             data: data1[n],
+//         }
+//     });
+// }
+
+myChart.setOption(option);
+
+
+
+
+    </script>
+</body>
+</html>

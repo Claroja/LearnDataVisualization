@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));// 基于准备好的dom，初始化echarts实例
+        var data = [
+            [80,100,78,73,100,80]
+        ];//外层数组的元素是对应的点，内层数组对应的是各个字段的值
+
+        var option = { //声明变量必须用var，养成良好的习惯
+            radar: {
+                indicator: [
+                    {name: '语文', max: 100},
+                    {name: '数学', max: 100},
+                    {name: '英语', max: 100},
+                    {name: '编程', max: 100},
+                    {name: '生物', max: 100},
+                    {name: '物理', max: 100}
+                ],
+            },
+            series: [
+                {
+                    type: 'radar',
+                    data: data,
+                },
+            ]
+        };
+        myChart.setOption(option);// 使用刚指定的配置项和数据显示图表
+
+
+    </script>
+</body>
+</html>
