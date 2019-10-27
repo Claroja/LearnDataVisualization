@@ -11,15 +11,15 @@
     <div id="main" style="width: 600px;height:400px;"></div>
     <script>
         var myChart = echarts.init(document.getElementById('main'));
-        var uploadedDataURL = "xxx.json";//地图的json文件
+        var uploadedDataURL = "./map/china.json";//地图的json文件
         myChart.showLoading();
         $.getJSON(uploadedDataURL, function(geoJson) {
-            echarts.registerMap('name', geoJson);//地图的注册名称,非json文件名称
+            echarts.registerMap('china', geoJson);//地图的注册名称,非json文件名称
             myChart.hideLoading();
             option = {
                 series : [{
                     type: 'map',
-                    map: 'name',//地图注册名称，非json文件名
+                    map: 'china',//地图注册名称，非json文件名
                     geoIndex: 0,
                 },]
             };
